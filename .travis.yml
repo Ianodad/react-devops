@@ -1,0 +1,24 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ianodad/react-devops -f Dockerfile.dev .
+
+script:
+  - docker run ianodad/react-devops npm run test -- --coverage
+
+
+language: minimal 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "react-devops"
+  env: "ReactDevops-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-571141290644"
+  bucket_path: "react-devops-docker"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
