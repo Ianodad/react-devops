@@ -6,7 +6,7 @@ before_install:
   - docker build -t ianodad/react-devops -f Dockerfile.dev .
 
 script:
-  - docker run ianodad/react-devops npm run test -- --coverage
+  - docker run -e CI=true ianodad/react-devops npm run test -- --coverage
 
 
 language: minimal 
