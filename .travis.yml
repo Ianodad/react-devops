@@ -10,6 +10,7 @@ script:
 
 
 language: minimal 
+
 deploy:
   provider: elasticbeanstalk
   region: "us-west-2"
