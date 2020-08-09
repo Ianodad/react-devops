@@ -16,9 +16,11 @@ deploy:
   app: "react-devops"
   env: "ReactDevops-env"
   bucket_name: "elasticbeanstalk-eu-west-2-571141290644"
-  # bucket_path: "react-devops"
+  bucket_path: "devops"
   on:
     branch: master
   access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key: "$AWS_SECRET_KEY"
   skip_cleanup: true
+
+  
