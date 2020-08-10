@@ -24,7 +24,7 @@ FROM nginx:alpine
 FROM nginx:alpine
 
 #Copy production build files from builder phase to nginx
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=0 /app/build /usr/share/nginx/html
 
 # if you are using react router 
 # you need to overwrite the default nginx configurations
