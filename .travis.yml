@@ -13,11 +13,11 @@ language: minimal
 
 deploy:
   provider: elasticbeanstalk
-  region: "us-west-2"
+  region: "eu-west-2"
   app: "react-devops"
   env: "ReactDevops-env"
   bucket_name: "elasticbeanstalk-eu-west-2-571141290644"
-  bucket_path: "devops"
+  bucket_path: "react-devops"
   on:
     branch: master
   access_key_id: "$AWS_ACCESS_KEY"
