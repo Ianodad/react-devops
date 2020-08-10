@@ -20,8 +20,20 @@ RUN npm run build
 #Run Stage Start
 FROM nginx:alpine
 
-# expose port 80 
-EXPOSE 80
+#Run Stage Start
+FROM nginx:alpine
 
 #Copy production build files from builder phase to nginx
 COPY --from=builder /app/build /usr/share/nginx/html
+
+# if you are using react router 
+# you need to overwrite the default nginx configurations
+# remove default nginx configuration file
+RUN rm /etc/nginx/conf.d/default.conf
+# replace with custom one
+COPY nginx/nginx.conf /etc/nginx/conf.d
+# --------- /only for those using react router ----------
+# expose port 80 to the outer world
+EXPOSE 80
+# start nginx 
+CMD ["nginx", "-g", "daemon off;"]
